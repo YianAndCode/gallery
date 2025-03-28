@@ -1,0 +1,11 @@
+services:
+  gallery:
+    restart: always
+    image: gallery:latest
+    container_name: gallery
+    ports:
+      - 9394:9394
+    environment:
+      - IMG_DIR=/images
+    volumes:
+      - "./images:/images"
