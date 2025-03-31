@@ -18,7 +18,6 @@ function App() {
   const [randomPlay, setRandomPlay] = useState(false);
 
   function changeCollection(id: string) {
-    console.log('changeCollection', id, collections);
     collections.map(collection => {
       if (collection.id != id) {
         return;
@@ -50,37 +49,31 @@ function App() {
   }, []);
 
   return (
-    <div className='container'>
+    <div className='grid grid-cols-[auto_1fr] max-md:grid-cols-1 grid-rows-1 h-screen'>
       <Sidebar collections={
         collections
       }
       onItemClicked={changeCollection}
       />
 
-      <div id="main" className='main'>
+      <div id="main" className='grid-in-main h-screen overflow-y-scroll'>
       {
         images.length == 0 ? (
-        <div style={{
-          height: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "#3f3f3f",
-        }}>
+        <div className='flex h-full justify-center items-center text-[#3f3f3f]'>
           暂时没有图片
         </div>
         ) : (
-        <div id='gallery' className='gallery'>
-          <div className='gallery-header'>
+        <div id='gallery' className='flex flex-col bg-white rounded-[10px] m-[0.5rem] shadow-[3px_3px_10px_0px_rgba(182,182,182,0.57)] py-[0.8rem] px-0'>
+          <div className='grid grid-cols-[1fr_auto] sticky top-0 bg-white z-10 p-[1rem] border-b border-dashed border-[#ebebeb] text-[#3f3f3f] font-[0.8rem]'>
             <div>{ title }</div>
-            <div className="gallery-header-btn-group">
+            <div className="flex text-[#b62e2e] cursor-pointer justify-center gap-[1rem]">
               <div
                 onClick={() => { setRandomPlay(true); }}
                 aria-label="随机播放"
               >
                 <Dices />
               </div>
-              <div className="button-divider" />
+              <div className="w-0 h-full border-l border-dashed border-[#b62e2e]" />
               <div
                 onClick={() => {scrollToTop();}}
                 aria-label="回到顶部"

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Image, ImagePrivew } from "./image";
-import "@/styles/masonry.css";
 
 interface MasonryProps {
     images: string[];
@@ -54,7 +53,7 @@ const Masonry = ({
         }
         setImgSrc("");
     })}
-    <div className='masonry' id="masonry-gallery">
+    <div className='grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 overflow-y-auto p-[0.8rem]' id="masonry-gallery">
         {images.map((image, idx) => (
           <Image
             key={idx}
