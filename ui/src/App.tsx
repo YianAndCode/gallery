@@ -4,6 +4,7 @@ import { Sidebar } from './components/ui/sidebar.tsx';
 import React from 'react';
 import { ChevronsUp, Dices } from 'lucide-react';
 import { Masonry } from './components/ui/masonry.tsx';
+import apiConfig from './config/api.ts';
 
 interface Collection {
   id: string;
@@ -34,7 +35,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('/api/list')
+    fetch(`${apiConfig.baseUrl}/list`)
       .then(response => response.json())
       .then(data => {
         setCollections(data);
